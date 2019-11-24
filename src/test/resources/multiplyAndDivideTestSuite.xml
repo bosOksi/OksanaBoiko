@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Multiply and Divide Tests">
+    <test name="Calculator Test">
+        <groups>
+            <run>
+                <include name="Multiply and Divide"></include>
+            </run>
+        </groups>
+        <packages>
+            <package name="hw1.tests"/>
+        </packages>
+    </test>
+</suite>
