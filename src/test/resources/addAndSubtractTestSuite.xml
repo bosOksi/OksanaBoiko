@@ -1,13 +1,9 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Add and Subtract Tests">
     <test name="Calculator Test">
-        <groups>
-            <run>
-                <include name="Sum and Subtract"></include>
-            </run>
-        </groups>
-        <packages>
-            <package name="hw1.tests"/>
-        </packages>
+        <classes>
+            <class name="tests.AddTest"></class>
+            <class name="tests.SubtractTest"></class>
+        </classes>
     </test>
 </suite>
