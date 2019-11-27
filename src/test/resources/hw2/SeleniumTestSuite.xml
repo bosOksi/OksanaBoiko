@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Test All For hw2">
+    <test name="hw2">
+        <classes>
+            <class name="hw2.Ex1"></class>
+            <class name="hw2.Ex2"></class>
+        </classes>
+    </test>
+</suite>
