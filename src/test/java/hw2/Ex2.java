@@ -6,13 +6,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
+import java.util.Arrays;
 import java.util.List;
 
-import static org.testng.Assert.assertTrue;
-
-
-public class Ex2 extends firstAndFinalCommonSteps {
+public class Ex2 extends FirstAndFinalCommonSteps {
 
     @Test
     public void SeleniumTestEx2() {
@@ -36,73 +33,21 @@ public class Ex2 extends firstAndFinalCommonSteps {
 
         //5. Click on "Service" subcategory in the header and check that drop down contains options
         driver.findElement(By.cssSelector("li.dropdown")).click();
+        List<String> textOfDropdownListInHeader = Arrays.asList("Support", "Dates", "Search", "Complex Table",
+                "Simple Table", "User Table", "Table with pages", "Different elements", "Performance");
         List<WebElement> dropdownListInHeader = driver.findElements(By.cssSelector("nav ul.dropdown-menu li"));
         for (int i = 0; i < dropdownListInHeader.size(); i++) {
-            switch (i) {
-                case 0:
-                    softAssert.assertEquals(dropdownListInHeader.get(i).getText(),"SUPPORT");
-                    break;
-                case 1:
-                    softAssert.assertEquals(dropdownListInHeader.get(i).getText(),"DATES");
-                    break;
-                case 2:
-                    softAssert.assertEquals(dropdownListInHeader.get(i).getText(),"SEARCH");
-                    break;
-                case 3:
-                    softAssert.assertEquals(dropdownListInHeader.get(i).getText(),"COMPLEX TABLE");
-                    break;
-                case 4:
-                    softAssert.assertEquals(dropdownListInHeader.get(i).getText(),"SIMPLE TABLE");
-                    break;
-                case 5:
-                    softAssert.assertEquals(dropdownListInHeader.get(i).getText(),"USER TABLE");
-                    break;
-                case 6:
-                    softAssert.assertEquals(dropdownListInHeader.get(i).getText(),"TABLE WITH PAGES");
-                    break;
-                case 7:
-                    softAssert.assertEquals(dropdownListInHeader.get(i).getText(),"DIFFERENT ELEMENTS");
-                    break;
-                case 8:
-                    softAssert.assertEquals(dropdownListInHeader.get(i).getText(),"PERFORMANCE");
-                    break;
-            }
+            softAssert.assertEquals(dropdownListInHeader.get(i).getText(), textOfDropdownListInHeader.get(i).toUpperCase());
         }
         softAssert.assertAll();
 
         //6. Click on Service subcategory in the left section and check that drop down contains options
         driver.findElement(By.cssSelector("li.menu-title")).click();
+        List<String> textOfDropdownListInLeftSection = Arrays.asList("Support", "Dates", "Complex Table",
+                "Simple Table", "Search", "User Table", "Table with pages", "Different elements", "Performance");
         List<WebElement> dropdownListInLeftSection = driver.findElements(By.cssSelector(".menu-title[index='3'] .sub span"));
         for (int i = 0; i < dropdownListInLeftSection.size(); i++) {
-            switch (i) {
-                case 0:
-                    softAssert.assertEquals(dropdownListInLeftSection.get(i).getText(),"Support");
-                    break;
-                case 1:
-                    softAssert.assertEquals(dropdownListInLeftSection.get(i).getText(),"Dates");
-                    break;
-                case 2:
-                    softAssert.assertEquals(dropdownListInLeftSection.get(i).getText(),"Complex Table");
-                    break;
-                case 3:
-                    softAssert.assertEquals(dropdownListInLeftSection.get(i).getText(),"Simple Table");
-                    break;
-                case 4:
-                    softAssert.assertEquals(dropdownListInLeftSection.get(i).getText(),"Search");
-                    break;
-                case 5:
-                    softAssert.assertEquals(dropdownListInLeftSection.get(i).getText(),"User Table");
-                    break;
-                case 6:
-                    softAssert.assertEquals(dropdownListInLeftSection.get(i).getText(),"Table with pages");
-                    break;
-                case 7:
-                    softAssert.assertEquals(dropdownListInLeftSection.get(i).getText(),"Different elements");
-                    break;
-                case 8:
-                    softAssert.assertEquals(dropdownListInLeftSection.get(i).getText(),"Performance");
-                    break;
-            }
+            softAssert.assertEquals(dropdownListInLeftSection.get(i).getText(), textOfDropdownListInLeftSection.get(i));
         }
         softAssert.assertAll();
 
@@ -134,10 +79,10 @@ public class Ex2 extends firstAndFinalCommonSteps {
         //11. Select checkboxes
         WebElement checkboxWater = checkboxes.get(0);
         WebElement checkboxWind = checkboxes.get(2);
-        WebElement ParentElementOfCheckboxWater = checkboxWater.findElement(By.xpath(".."));
-        WebElement ParentElementOfCheckboxWind = checkboxWind.findElement(By.xpath(".."));
-        softAssert.assertEquals(ParentElementOfCheckboxWater.getText(), "Water");
-        softAssert.assertEquals(ParentElementOfCheckboxWind.getText(), "Wind");
+        WebElement parentElementOfCheckboxWater = checkboxWater.findElement(By.xpath(".."));
+        WebElement parentElementOfCheckboxWind = checkboxWind.findElement(By.xpath(".."));
+        softAssert.assertEquals(parentElementOfCheckboxWater.getText(), "Water");
+        softAssert.assertEquals(parentElementOfCheckboxWind.getText(), "Wind");
         checkboxWater.click();
         checkboxWind.click();
         boolean selectedCheckboxWater = checkboxWater.isSelected();
@@ -157,8 +102,8 @@ public class Ex2 extends firstAndFinalCommonSteps {
 
         //13. Select radio
         WebElement radioSelen = radios.get(3);
-        WebElement ParentElementOfRadioSelen = radioSelen.findElement(By.xpath(".."));
-        softAssert.assertEquals(ParentElementOfRadioSelen.getText(), "Selen");
+        WebElement parentElementOfRadioSelen = radioSelen.findElement(By.xpath(".."));
+        softAssert.assertEquals(parentElementOfRadioSelen.getText(), "Selen");
         radioSelen.click();
         softAssert.assertTrue(radioSelen.isEnabled());
         softAssert.assertAll();
@@ -170,15 +115,15 @@ public class Ex2 extends firstAndFinalCommonSteps {
         softAssert.assertAll();
 
         //15. Select in dropdown
-        WebElement DropDownListYellow = driver.findElement(By.xpath("//option[contains(text(),'Yellow')]"));
-        DropDownListYellow.click();
-        softAssert.assertTrue(DropDownListYellow.isSelected());
-        softAssert.assertTrue(DropDownListYellow.isDisplayed());
+        WebElement dropDownListYellow = driver.findElement(By.xpath("//option[contains(text(),'Yellow')]"));
+        dropDownListYellow.click();
+        softAssert.assertTrue(dropDownListYellow.isSelected());
+        softAssert.assertTrue(dropDownListYellow.isDisplayed());
         softAssert.assertAll();
 
         //16. Assert that for dropdown there is a log row and value is corresponded to the selected value.
         WebElement colorsLogRow = driver.findElement(By.xpath("//li[contains(text(),'Colors')]"));
-        softAssert.assertTrue(colorsLogRow.getText().contains(DropDownListYellow.getText()));
+        softAssert.assertTrue(colorsLogRow.getText().contains(dropDownListYellow.getText()));
         softAssert.assertAll();
 
         //17. Unselect and assert checkboxes

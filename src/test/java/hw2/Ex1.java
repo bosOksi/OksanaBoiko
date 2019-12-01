@@ -5,12 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class Ex1 extends firstAndFinalCommonSteps {
+public class Ex1 extends FirstAndFinalCommonSteps {
 
     @Test
     public void SeleniumTestEx1() {
@@ -33,18 +34,11 @@ public class Ex1 extends firstAndFinalCommonSteps {
         assertEquals(driver.getTitle(), "Home Page");
 
         //6. Assert that there are 4 items on the header section are displayed and they have proper texts
-        WebElement homeBtn = driver.findElement(By.linkText("Home"));
-        WebElement contactFormBtn = driver.findElement(By.linkText("Contact form"));
-        WebElement serviceBtn = driver.findElement(By.linkText("Service"));
-        WebElement metalsAndColorsBtn = driver.findElement(By.linkText("Metals & Colors"));
-        assertTrue(homeBtn.isDisplayed());
-        assertTrue(contactFormBtn.isDisplayed());
-        assertTrue(serviceBtn.isDisplayed());
-        assertTrue(metalsAndColorsBtn.isDisplayed());
-        assertEquals(homeBtn.getText(), "Home");
-        assertEquals(contactFormBtn.getText(), "Contact form");
-        assertEquals(serviceBtn.getText(), "Service");
-        assertEquals(metalsAndColorsBtn.getText(), "Metals & Colors");
+        List<String> linkTextOfHeaderButtons = Arrays.asList("Home", "Contact form", "Service", "Metals & Colors");
+        for (String linkTextOfHeaderButton : linkTextOfHeaderButtons) {
+            assertTrue(driver.findElement(By.linkText(linkTextOfHeaderButton)).isDisplayed());
+            assertEquals(driver.findElement(By.linkText(linkTextOfHeaderButton)).getText(), linkTextOfHeaderButton);
+        }
 
         //7. Assert that there are 4 images on the Index Page and they are displayed
         List<WebElement> images = driver.findElements(By.cssSelector(".benefit-icon"));
