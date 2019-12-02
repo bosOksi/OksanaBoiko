@@ -61,6 +61,15 @@
                 <suite.file>src/test/resources/hw2/SeleniumTestSuite.xml</suite.file>
             </properties>
         </profile>
+        <profile>
+            <id>page objects</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/hw3/pageObjects.xml</suite.file>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
