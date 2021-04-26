@@ -16,7 +16,7 @@
         <!-- Libraries version -->
         <testng.version>7.0.0</testng.version>
         <selenium.version>3.141.59</selenium.version>
-        <commons-io.version>2.6</commons-io.version>
+        <commons-io.version>2.7</commons-io.version>
         <webdrivermanager.version>3.7.1</webdrivermanager.version>
 
         <!-- Plugins version -->
